@@ -1,0 +1,18 @@
+{
+  "name": "rapidapi-data-bundle",
+  "version": "1.0.0",
+  "description": "Suite of data APIs for RapidAPI marketplace",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cheerio": "^1.0.0-rc.12",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "express-rate-limit": "^7.1.4"
+  }
+}

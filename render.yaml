@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: datapipe-api
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node src/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: RAPIDAPI_PROXY_SECRET
+        sync: false
+    healthCheckPath: /health
