@@ -25,7 +25,7 @@ const tests = [
   
   // Email Finder
   { name: 'Email Finder', method: 'GET', path: '/api/email-finder/domain?domain=basecamp.com' },
-  { name: 'Email Pattern', method: 'GET', path: '/api/email-finder/pattern?domain=basecamp.com&first=John&last=Doe' },
+  { name: 'Email Pattern', method: 'GET', path: '/api/email-finder/pattern?domain=basecamp.com&name=John+Doe' },
   
   // Company Enrichment
   { name: 'Company Enrichment', method: 'GET', path: '/api/enrich/company?domain=notion.so' },
