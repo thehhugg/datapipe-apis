@@ -35,6 +35,7 @@ import { pageDiffRouter } from './apis/page-diff.js';
 import { ipGeolocationRouter } from './apis/ip-geolocation.js';
 import { qrCodeRouter } from './apis/qr-code.js';
 import { urlRouter } from './apis/url-shortener.js';
+import { emailValidatorRouter } from './apis/email-validator.js';
 import { rapidApiAuth, requestLogger } from './middleware/rapidapi-auth.js';
 
 const app = express();
@@ -104,6 +105,7 @@ app.get('/', (req, res) => {
       { path: '/api/ip', description: 'IP Geolocation — country, city, ISP, proxy detection' },
       { path: '/api/qr', description: 'QR Code Generator — create QR codes from any data' },
       { path: '/api/url', description: 'URL Metadata — OpenGraph, Twitter Cards, redirects, validation' },
+      { path: '/api/email', description: 'Email Validation — syntax, MX, disposable detection, bulk verify' },
     ],
     docs: 'https://rapidapi.com/datapipe',
   });
@@ -129,6 +131,7 @@ app.use('/api/diff', pageDiffRouter);
 app.use('/api/ip', ipGeolocationRouter);
 app.use('/api/qr', qrCodeRouter);
 app.use('/api/url', urlRouter);
+app.use('/api/email', emailValidatorRouter);
 
 // Error handler
 app.use((err, req, res, next) => {
