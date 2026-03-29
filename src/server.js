@@ -37,6 +37,7 @@ import { qrCodeRouter } from './apis/qr-code.js';
 import { urlRouter } from './apis/url-shortener.js';
 import { emailValidatorRouter } from './apis/email-validator.js';
 import { rapidApiAuth, requestLogger } from './middleware/rapidapi-auth.js';
+import { setupDocs } from './openapi.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -74,6 +75,9 @@ app.use((req, res, next) => {
   }
   next();
 });
+
+// API docs (Swagger UI + OpenAPI JSON)
+setupDocs(app);
 
 // Health check endpoint
 app.get('/health', (req, res) => {

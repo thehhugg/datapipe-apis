@@ -1,112 +1,83 @@
-# RapidAPI Listing Guide — Step by Step
+# RapidAPI Listing Guide — DataPipe APIs
 
-## Strategy: List 5 APIs Individually (Higher Visibility)
+## Strategy: List as INDIVIDUAL APIs (not a bundle)
+Each API gets its own RapidAPI listing. This means:
+- More surface area in search results
+- Users pay only for what they need
+- Higher chance of discovery
 
-Each API gets its own RapidAPI listing = 5x more search visibility, 5x more chances to be found.
+## Listing Priority (by demand + uniqueness)
 
-## Phase 1: Deploy the Bundle (10 min)
+### Tier 1 — List First (highest demand)
+1. **Company Enrichment API** — "Get company data from any domain"
+2. **Email Validator API** — "Validate emails with MX, disposable, quality score"
+3. **SEO Analysis API** — "Instant on-page SEO audit"
+4. **Tech Stack Detector API** — "Detect what technologies a website uses"
 
-### Option A: Railway (Fastest)
-1. Push to GitHub: `gh repo create datapipe-apis --private --source . --push`
-2. Go to [railway.app](https://railway.app) → New Project → Deploy from GitHub
-3. Select the repo → Railway auto-detects Node.js
-4. Click "Generate Domain" → you get `something.up.railway.app`
-5. Set env: `NODE_ENV=production`
-6. Done. Server running. Cost: ~$5/mo.
+### Tier 2 — List Next
+5. **WHOIS + DNS Lookup API** — "Domain intelligence: WHOIS, DNS, SSL"
+6. **IP Geolocation API** — "IP to location with proxy/VPN detection"
+7. **Text Analysis API** — "Readability, sentiment, keywords"
+8. **Content Extractor API** — "Convert any webpage to clean text"
 
-### Option B: Render (Free tier available)
-1. Push to GitHub
-2. Go to [render.com](https://render.com) → New Web Service → Connect repo
-3. Build: `npm install`, Start: `node src/server.js`
-4. Free tier: 750 hrs/mo, spins down after 15 min idle (cold starts ~30s)
-5. Pro: $7/mo for always-on
+### Tier 3 — Nice to have
+9. **QR Code Generator API**
+10. **Social Trends API**
+11. **Email Finder API**
+12. **Page Change Monitor API**
 
-### Option C: Fly.io
-1. `fly launch` → `fly deploy`
-2. Free tier: 3 shared VMs, 160GB/mo bandwidth
+## Pricing per API (RapidAPI model)
 
-## Phase 2: List on RapidAPI (15 min per API)
+### Free Tier
+- 100 requests/month
+- Purpose: let users test, build trust
 
-### API 1: Company Enrichment API ⭐ (Highest value)
-- **Category:** Data > Business
-- **Endpoint:** `GET /api/enrich/company?domain=example.com`
-- **Description:** "Get comprehensive company data from just a domain name. Returns company description, tech stack, emails, phone numbers, social links, DNS/MX records, and security headers. No API keys needed — we handle all the scraping."
-- **Pricing:**
-  - Free: 50 calls/month
-  - Basic ($9/mo): 500 calls/month
-  - Pro ($29/mo): 5,000 calls/month
-  - Business ($79/mo): 25,000 calls/month
+### Basic ($9.99/month)
+- 1,000 requests/month
+- Rate limit: 10/second
 
-### API 2: Domain Intelligence (WHOIS + DNS + SSL)
-- **Category:** Data > Domain
-- **Endpoint:** `GET /api/whois/lookup?domain=example.com`
-- **Description:** "Complete domain intelligence: WHOIS registration data, DNS records (A, MX, NS, TXT, SOA), SSL certificate info, nameserver details, and domain availability check. All from one fast API call."
-- **Pricing:**
-  - Free: 100 calls/month
-  - Basic ($9/mo): 1,000 calls/month
-  - Pro ($19/mo): 10,000 calls/month
-  - Business ($49/mo): 50,000 calls/month
+### Pro ($29.99/month)
+- 10,000 requests/month
+- Rate limit: 30/second
+- Priority support
 
-### API 3: Website Tech Stack Detector
-- **Category:** Data > Technology
-- **Endpoint:** `GET /api/tech-stack/detect?url=https://example.com`
-- **Description:** "Detect what technologies any website uses. Identifies CMS, hosting, security headers, JavaScript frameworks, and more. Includes DNS email provider detection and security header grading."
-- **Pricing:**
-  - Free: 100 calls/month
-  - Basic ($9/mo): 1,000 calls/month
-  - Pro ($19/mo): 10,000 calls/month
+### Business ($99.99/month)
+- 100,000 requests/month
+- Rate limit: 100/second
+- Custom endpoints
 
-### API 4: SEO Analysis API
-- **Category:** Tools > SEO
-- **Endpoint:** `GET /api/seo/analyze?url=https://example.com`
-- **Description:** "Instant on-page SEO audit for any URL. Returns title/meta analysis, heading structure, image alt text audit, link analysis, Schema.org detection, security headers, and an overall SEO score with letter grade."
-- **Pricing:**
-  - Free: 50 calls/month
-  - Basic ($9/mo): 500 calls/month
-  - Pro ($29/mo): 5,000 calls/month
+## Listing Steps (for each API)
 
-### API 5: Email Validator
-- **Category:** Tools > Email
-- **Endpoint:** `GET /api/email/validate?email=test@example.com`
-- **Description:** "Validate email addresses instantly. Checks syntax, MX records, disposable email detection, free provider identification, and role-based address detection. Returns a quality score 0-100 and deliverability prediction."
-- **Pricing:**
-  - Free: 100 calls/month
-  - Basic ($9/mo): 2,000 calls/month
-  - Pro ($19/mo): 10,000 calls/month
-  - Business ($49/mo): 50,000 calls/month
+1. Go to https://rapidapi.com/provider
+2. Click "Add New API"
+3. Name: [API Name] (e.g., "Company Enrichment API - DataPipe")
+4. Category: Data / Business / SEO (depends on API)
+5. Import from: "OpenAPI Spec" → paste from /openapi.json
+6. Set base URL to deployed server
+7. Add RapidAPI proxy secret to server env
+8. Set pricing tiers
+9. Write compelling description with use cases
+10. Add example responses
+11. Submit for review
 
-## Phase 3: Additional Listings (week 2)
+## What Heather Needs To Do (One-Time, 15 min)
+1. Create RapidAPI provider account at https://rapidapi.com/provider
+2. Send credentials to Lumen
+3. Agents handle all listings, descriptions, and optimization
 
-6. **Text Analysis API** — readability scoring, sentiment, keyword extraction
-7. **IP Geolocation API** — IP to location with ISP/org data
-8. **Social Trends API** — Reddit/HN trending content
-9. **Content Extractor API** — URL to clean text/metadata
-10. **QR Code Generator** — text/URL to QR code images
+## Revenue Projections (per API, monthly)
+Conservative estimate based on RapidAPI marketplace averages:
+- Month 1: $50-100 (free users converting to Basic)
+- Month 3: $200-500 (4 APIs listed, organic growth)
+- Month 6: $500-2,000 (all APIs listed, reviews building)
+- Month 12: $2,000-5,000 (established, API marketplace compounding)
 
-## Revenue Projection (Conservative)
+With 4 Tier-1 APIs: $800-2,000/mo by month 3
+With all 12 APIs: $2,000-5,000/mo by month 6
 
-| Month | Subscribers | Avg $/mo | MRR | After RapidAPI 25% |
-|-------|------------|----------|-----|---------------------|
-| 1     | 20         | $15      | $300  | $225 |
-| 2     | 60         | $18      | $1,080 | $810 |
-| 3     | 120        | $20      | $2,400 | $1,800 |
-| 6     | 300        | $22      | $6,600 | $4,950 |
-
-These are conservative — top RapidAPI APIs do $10-50K/mo.
-
-## What Heather Does (One-Time, 30 min total)
-
-1. **[2 min]** Create GitHub account (or use existing) → make repo
-2. **[5 min]** Sign up at railway.app → deploy from GitHub
-3. **[10 min]** Sign up at rapidapi.com/provider → create first API listing
-4. **[10 min]** Create remaining 4 API listings (copy-paste from above)
-5. **[3 min]** Set RAPIDAPI_PROXY_SECRET env var on Railway
-
-## What Agents Do (Ongoing, Zero Heather Effort)
-
-- Monitor API uptime
-- Fix bugs and add features
-- Optimize for RapidAPI search ranking (descriptions, tags)
-- Add new APIs to the bundle
-- Respond to user feedback/feature requests
-- Scale infrastructure as needed
+## Key RapidAPI SEO Tips
+- Use popular search terms in API name (e.g., "company enrichment", "email validation")
+- Add lots of code examples (Python, JavaScript, cURL)
+- Respond to all user questions quickly
+- Keep uptime > 99.9% (use health checks)
+- Competitive pricing — undercut established players on Tier 1 apis
