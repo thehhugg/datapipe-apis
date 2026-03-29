@@ -30,6 +30,12 @@ import { companyIntelRouter } from './apis/company-intel.js';
 import { textAnalysisRouter } from './apis/text-analysis.js';
 import { contentExtractorRouter } from './apis/content-extractor.js';
 import { seoAnalysisRouter } from './apis/seo-analysis.js';
+import { priceMonitorRouter } from './apis/price-monitor.js';
+import { pageDiffRouter } from './apis/page-diff.js';
+import { ipGeolocationRouter } from './apis/ip-geolocation.js';
+import { qrCodeRouter } from './apis/qr-code.js';
+import { urlRouter } from './apis/url-shortener.js';
+import { rapidApiAuth, requestLogger } from './middleware/rapidapi-auth.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -38,6 +44,10 @@ const PORT = process.env.PORT || 3000;
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
+
+// RapidAPI authentication + request logging
+app.use(rapidApiAuth);
+app.use(requestLogger);
 
 // Rate limiting (per-IP fallback; RapidAPI handles subscription limits)
 const limiter = rateLimit({
@@ -89,6 +99,11 @@ app.get('/', (req, res) => {
       { path: '/api/text', description: 'Text analysis — readability, sentiment, keywords, content scoring' },
       { path: '/api/content', description: 'Content extraction — clean article/page text from any URL' },
       { path: '/api/seo', description: 'SEO analysis — on-page audit, headings, images, social tags, performance hints' },
+      { path: '/api/monitor', description: 'Price & change monitor — track changes on any webpage' },
+      { path: '/api/diff', description: 'Page diff — detect and report changes between page versions' },
+      { path: '/api/ip', description: 'IP Geolocation — country, city, ISP, proxy detection' },
+      { path: '/api/qr', description: 'QR Code Generator — create QR codes from any data' },
+      { path: '/api/url', description: 'URL Metadata — OpenGraph, Twitter Cards, redirects, validation' },
     ],
     docs: 'https://rapidapi.com/datapipe',
   });
@@ -109,6 +124,11 @@ app.use('/api/intel', companyIntelRouter);
 app.use('/api/text', textAnalysisRouter);
 app.use('/api/content', contentExtractorRouter);
 app.use('/api/seo', seoAnalysisRouter);
+app.use('/api/monitor', priceMonitorRouter);
+app.use('/api/diff', pageDiffRouter);
+app.use('/api/ip', ipGeolocationRouter);
+app.use('/api/qr', qrCodeRouter);
+app.use('/api/url', urlRouter);
 
 // Error handler
 app.use((err, req, res, next) => {
